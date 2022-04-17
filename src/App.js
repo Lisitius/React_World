@@ -9,6 +9,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        {/* path"*" works if the url does not match anything declared above */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
