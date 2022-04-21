@@ -30,6 +30,11 @@ const Article = ({ article }) => {
     });
   };
 
+  const handleDelete = () => {
+    axios.delete("http://localhost:3005/articles/" + article.id);
+    window.location.reload();
+  };
+
   return (
     <div
       className="article"
@@ -54,7 +59,17 @@ const Article = ({ article }) => {
         ) : (
           <button onClick={() => setIsEditing(true)}>Edit</button>
         )}
-        <button>Supprimer</button>
+        <button
+          onClick={() => {
+            if (
+              window.confirm("Voulez-vous vraiment supprimer cet article ?")
+            ) {
+              handleDelete();
+            }
+          }}
+        >
+          Supprimer
+        </button>
       </div>
     </div>
   );
